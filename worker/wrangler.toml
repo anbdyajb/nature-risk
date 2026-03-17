@@ -1,0 +1,13 @@
+name = "nature-risk-proxy"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ALLOWED_ORIGIN = "https://jjohare.github.io"
+
+# API keys stored as secrets (set via: wrangler secret put <NAME>)
+# OS_DATA_HUB_KEY
+# MET_OFFICE_KEY
+# UKHO_KEY
+# ANTHROPIC_KEY

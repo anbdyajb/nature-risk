@@ -9,6 +9,13 @@ build/
 out/
 *.tsbuildinfo
 
+# Rust build artefacts
+physics-engine/target/
+src/wasm/
+
+# Worker deps
+worker/node_modules/
+
 # Environment & secrets
 .env
 .env.*
@@ -74,3 +81,4 @@ data/raw/
 data/processed/
 *.tif
 *.tiff
+vite.config.d.ts
