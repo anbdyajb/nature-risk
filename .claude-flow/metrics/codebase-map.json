@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-17T13:14:14.048Z",
+  "timestamp": "2026-03-17T14:59:14.587Z",
   "projectRoot": "/workspaces/nature-risk",
   "structure": {
     "hasPackageJson": false,
@@ -7,5 +7,5 @@
     "hasClaudeConfig": true,
     "hasClaudeFlow": true
   },
-  "scannedAt": 1773753254048
+  "scannedAt": 1773759554587
 }
