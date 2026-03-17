@@ -1,0 +1,47 @@
+{
+  "name": "nature-risk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Agentic geospatial engine quantifying natural capital impact on UK climate risk",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:wasm": "cd physics-engine && wasm-pack build --target web --out-dir ../src/wasm",
+    "build:all": "npm run build:wasm && npm run build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@mapbox/mapbox-gl-draw": "^1.4.3",
+    "dompurify": "^3.3.3",
+    "html2canvas": "^1.4.1",
+    "idb-keyval": "^6.2.1",
+    "immer": "^10.1.1",
+    "jspdf": "^2.5.2",
+    "maplibre-gl": "^4.7.1",
+    "marked": "^15.0.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "uuid": "^11.1.0",
+    "zundo": "^2.3.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/dompurify": "^2.4.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.7",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.18.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7",
+    "vite-plugin-top-level-await": "^1.4.4",
+    "vite-plugin-wasm": "^3.4.1",
+    "vitest": "^3.0.4"
+  }
+}

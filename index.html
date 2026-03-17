@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nature Risk — Quantify how natural capital interventions reduce physical climate risks to UK corporate assets." />
+  <title>Nature Risk — Analysis Co-Pilot</title>
+  <link rel="preconnect" href="https://api.maptiler.com" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, #root { height: 100%; overflow: hidden; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      background: #0a1628;
+      color: #f1f5f9;
+    }
+    #loading-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      gap: 16px;
+    }
+    #loading-screen .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(52,211,153,0.2);
+      border-top-color: #34d399;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="loading-screen">
+      <div class="spinner"></div>
+      <p style="color: #94a3b8; font-size: 14px;">Initialising Nature Risk engine&hellip;</p>
+    </div>
+  </div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

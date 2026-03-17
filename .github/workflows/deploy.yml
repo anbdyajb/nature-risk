@@ -1,0 +1,119 @@
+name: Build & Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  # ── 1. Build Rust WASM physics engine ──────────────────────────
+  build-wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Build WASM
+        run: |
+          cd physics-engine
+          wasm-pack build --target web --out-dir ../src/wasm
+
+      - name: Upload WASM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-pkg
+          path: src/wasm/
+          retention-days: 1
+
+  # ── 2. Build React/Vite app ────────────────────────────────────
+  build-app:
+    runs-on: ubuntu-latest
+    needs: build-wasm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download WASM artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: wasm-pkg
+          path: src/wasm/
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          VITE_MAPTILER_KEY: ${{ secrets.VITE_MAPTILER_KEY }}
+          VITE_PROXY_URL: ${{ secrets.VITE_PROXY_URL }}
+
+      - name: Assemble deploy directory
+        run: |
+          # Create the final structure:
+          #   /          -> landing page (docs/index.html)
+          #   /app/      -> React SPA (Vite output)
+          #   /adr/      -> Architecture Decision Records
+          mkdir -p deploy/app
+
+          # Landing page at root
+          cp docs/index.html deploy/index.html
+
+          # Copy ADR docs and prototype app from docs/ if present
+          if [ -d docs/adr ]; then
+            cp -r docs/adr deploy/adr
+          fi
+          if [ -d docs/app ]; then
+            cp -r docs/app deploy/docs-app
+          fi
+
+          # Move Vite build output into /app/
+          cp -r dist/* deploy/app/
+
+          # GitHub Pages no-Jekyll marker
+          touch deploy/.nojekyll
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: deploy
+
+  # ── 3. Deploy to GitHub Pages ──────────────────────────────────
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-app
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
