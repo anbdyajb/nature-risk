@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nature Risk — Natural Capital Impact Predictor</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0a1628;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #10b981;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+      color: #94a3b8;
+      text-align: center;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .cards {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      width: 220px;
+      text-align: center;
+    }
+
+    .card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+
+    .card h3 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 0.3rem;
+    }
+
+    .card p {
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #10b981, #3b82f6);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      margin-bottom: 2rem;
+    }
+
+    .cta:hover { opacity: 0.85; }
+
+    footer {
+      font-size: 0.75rem;
+      color: #334155;
+      text-align: center;
+    }
+
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+  <div class="badge">Coming Soon</div>
+
+  <h1>Nature Risk</h1>
+
+  <p class="subtitle">
+    An agentic geospatial engine that quantifies how natural capital interventions
+    reduce physical climate risks to corporate and infrastructure assets across the UK.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🌊</div>
+      <h3>Flood Risk Modelling</h3>
+      <p>Upstream catchment tracing with 1m LIDAR resolution</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🪸</div>
+      <h3>Coastal Protection</h3>
+      <p>Wave attenuation via reefs, seagrass & saltmarsh</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>ROI Reporting</h3>
+      <p>Pre-feasibility reports in 15 minutes, not 3 months</p>
+    </div>
+  </div>
+
+  <a class="cta" href="https://github.com/anbdyajb/nature-risk">
+    View on GitHub &rarr;
+  </a>
+
+  <footer>
+    &copy; 2026 Nature Risk &nbsp;&bull;&nbsp;
+    <a href="https://github.com/anbdyajb/nature-risk">GitHub</a>
+  </footer>
+
+</body>
+</html>
